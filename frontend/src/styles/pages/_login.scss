@@ -5,6 +5,11 @@ main#MainLogin {
 	align-items: center;
 
 	h1 {
-		text-align: center;
+		text-align: left;
+	}
+
+	label,
+	input {
+		margin: 10px 0;
 	}
 }
