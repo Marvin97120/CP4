@@ -29,18 +29,18 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 INSERT INTO `images` (`title`, `url`, `alt`, `original_src`) VALUES
-("image01", "urltest", "alttest", "originalsrctest"),
-("image02", "urltest", "alttest", "originalsrctest"),
-("image03", "urltest", "alttest", "originalsrctest"),
-("image04", "urltest", "alttest", "originalsrctest"),
-("image05", "urltest", "alttest", "originalsrctest"),
-("image06", "urltest", "alttest", "originalsrctest"),
-("image07", "urltest", "alttest", "originalsrctest"),
-("image08", "urltest", "alttest", "originalsrctest"),
-("image09", "urltest", "alttest", "originalsrctest"),
-("image10", "urltest", "alttest", "originalsrctest"),
-("image11", "urltest", "alttest", "originalsrctest"),
-("image12", "urltest", "alttest", "originalsrctest");
+("image01", "urltest01", "alttest", "originalsrctest"),
+("image02", "urltest02", "alttest", "originalsrctest"),
+("image03", "urltest03", "alttest", "originalsrctest"),
+("image04", "urltest04", "alttest", "originalsrctest"),
+("image05", "urltest05", "alttest", "originalsrctest"),
+("image06", "urltest06", "alttest", "originalsrctest"),
+("image07", "urltest07", "alttest", "originalsrctest"),
+("image08", "urltest08", "alttest", "originalsrctest"),
+("image09", "urltest09", "alttest", "originalsrctest"),
+("image10", "urltest10", "alttest", "originalsrctest"),
+("image11", "urltest11", "alttest", "originalsrctest"),
+("image12", "urltest12", "alttest", "originalsrctest");
 UNLOCK TABLES;
 
 -- ------------------------------------------------------------------------- --
@@ -63,7 +63,7 @@ CREATE TABLE `panels` (
 
 LOCK TABLES `panels` WRITE;
 INSERT INTO `panels` (`title`, `main_image_id`, `illus1_id`, `illus2_id`, `illus3_id`, `text`, `category_id`) VALUES
-("panneau01", 1, 2, 3, 4, "description panneau", 1),
-("panneau02", 5, 6, 7, 8, "description panneau", 2),
-("panneau03", 9, 10, 11, 12, "description panneau", 3);
+("panneau01", 1, 2, 3, 4, "description panneau01", 1),
+("panneau02", 5, 6, 7, 8, "description panneau02", 2),
+("panneau03", 9, 10, 11, 12, "description panneau03", 3);
 UNLOCK TABLES;
