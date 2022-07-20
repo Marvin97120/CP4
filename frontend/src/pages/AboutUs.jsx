@@ -1,9 +1,12 @@
 import { ImMail2 } from "react-icons/im";
 
+import Nav from "@comp/Nav";
+
 const AboutUs = () => {
 	return (
 		<>
-			<nav>NAV TEST</nav>
+			<Nav />
+
 			<main id="MainAboutUs">
 				<h1>CAPELINE 974</h1>
 
