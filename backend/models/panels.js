@@ -81,10 +81,18 @@ const findOne = (id) => {
 		.then(([res]) => res[0]);
 };
 
-const add = (user) => {
+const add = (panel) => {
 	return db.query(
-		"INSERT INTO users (firstname, lastname, password, email, phone) VALUES (?, ?, ?, ?, ?)",
-		[user.firstname, user.lastname, user.password, user.email, user.phone]
+		"INSERT INTO panels (title, main_image_id, illus1_id, illus2_id, illus3_id, text, category_id) VALUES (?, ?, ?, ?, ?, ?, ?)",
+		[
+			panel.title,
+			panel.main_image_id,
+			panel.illus1_id,
+			panel.illus2_id,
+			panel.illus3_id,
+			panel.text,
+			panel.category_id,
+		]
 	);
 };
 
@@ -93,7 +101,7 @@ const update = (user, id) => {
 };
 
 const remove = (id) => {
-	return db.query("DELETE FROM users WHERE id = ?", [id]);
+	return db.query("DELETE FROM panels WHERE id = ?", [id]);
 };
 
 module.exports = { findAll, findOne, add, update, remove };

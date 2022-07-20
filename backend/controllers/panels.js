@@ -28,7 +28,15 @@ panelsRouter.get("/:id", (req, res) => {
 });
 
 panelsRouter.post("/", (req, res) => {
-	res.status(200).send("post");
+	panels
+		.add(req.body)
+		.then(([result]) => {
+			res.status(200).send({ ...req.body, id: result.insertId });
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send(`Error creating panel.`);
+		});
 });
 
 panelsRouter.put("/:id", (req, res) => {
@@ -36,7 +44,15 @@ panelsRouter.put("/:id", (req, res) => {
 });
 
 panelsRouter.delete("/:id", (req, res) => {
-	res.status(200).send("delete");
+	panels
+		.remove(req.params.id)
+		.then((result) => {
+			res.status(200).send(`Panel ${req.params.id} successfully deleted`);
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send("Error during panel deletion.");
+		});
 });
 
 module.exports = panelsRouter;
