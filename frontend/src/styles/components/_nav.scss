@@ -1,6 +1,7 @@
 nav#Nav {
+	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 
 	button {
@@ -16,19 +17,25 @@ nav#Nav {
 	}
 
 	div {
+		width: 100%;
 		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		height: 8vh;
 
 		@media screen and (max-width: 450px) {
 			display: flex;
-			justify-content: space-around;
-			align-items: center;
 			height: 100vh;
-			width: 100%;
 			background-color: green;
 			flex-direction: column;
 			position: absolute;
 			top: 0;
 			right: 0;
 		}
+	}
+
+	a {
+		width: 20%;
+		text-align: center;
 	}
 }
