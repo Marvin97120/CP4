@@ -1,4 +1,5 @@
 const panelsRouter = require("express").Router();
+const panels = require("../models/panels");
 
 panelsRouter.get("/", (req, res) => {
 	res.status(200).send("get all");
