@@ -96,8 +96,8 @@ const add = (panel) => {
 	);
 };
 
-const update = (user, id) => {
-	return db.query(`UPDATE users SET ? WHERE id = ?`, [user, id]);
+const update = (panel, id) => {
+	return db.query(`UPDATE panels SET ? WHERE id = ?`, [panel, id]);
 };
 
 const remove = (id) => {

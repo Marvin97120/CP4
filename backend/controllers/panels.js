@@ -40,7 +40,20 @@ panelsRouter.post("/", (req, res) => {
 });
 
 panelsRouter.put("/:id", (req, res) => {
-	res.status(200).send("put");
+	console.log(req.body);
+	panels
+		.update(req.body, parseInt(req.params.id, 10))
+		.then(([result]) => {
+			if (result.affectedRows === 0) {
+				res.sendStatus(404);
+			} else {
+				res.status(201).send(`Panel ${req.params.id} successfully updated`);
+			}
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send("Error updating panel.");
+		});
 });
 
 panelsRouter.delete("/:id", (req, res) => {
