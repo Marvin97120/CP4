@@ -1,14 +1,26 @@
 import { Link } from "react-router-dom";
 
+import Nav from "@comp/Nav";
+
 const Login = () => {
 	return (
-		<main id="MainLogin">
-			<h1>Login</h1>
-			<p>Login page</p>
-			<Link to="/home">
-				<button>CLICK ME</button>
-			</Link>
-		</main>
+		<>
+			<Nav />
+
+			<main id="MainLogin">
+				<h1>Connexion</h1>
+
+				<label htmlFor="name">Identifiant</label>
+				<input name="name" type="text" />
+
+				<label htmlFor="password">Mot de passe</label>
+				<input name="password" type="password" />
+
+				<Link to="/admin">
+					<button>Se Connecter</button>
+				</Link>
+			</main>
+		</>
 	);
 };
 
