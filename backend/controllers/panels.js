@@ -2,7 +2,15 @@ const panelsRouter = require("express").Router();
 const panels = require("../models/panels");
 
 panelsRouter.get("/", (req, res) => {
-	res.status(200).send("get all");
+	panels
+		.findAll()
+		.then((result) => {
+			res.status(200).send(result);
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send("Error requesting panels informations.");
+		});
 });
 
 panelsRouter.get("/:id", (req, res) => {
