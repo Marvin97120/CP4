@@ -14,7 +14,17 @@ panelsRouter.get("/", (req, res) => {
 });
 
 panelsRouter.get("/:id", (req, res) => {
-	res.status(200).send("get one");
+	panels
+		.findOne(req.params.id)
+		.then((result) => {
+			res.status(200).send(result);
+		})
+		.catch((err) => {
+			console.error(err);
+			res
+				.status(500)
+				.send(`Error requesting panel ${req.params.id} informations.`);
+		});
 });
 
 panelsRouter.post("/", (req, res) => {
