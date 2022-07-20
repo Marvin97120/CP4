@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const ExpoDetails = () => {
 	return (
-		<main id="MainHome">
-			<h1>Home</h1>
-			<p>Home page</p>
+		<main id="MainExpoDetails">
+			<h1>ExpoDetails</h1>
+			<p>ExpoDetails page</p>
 			<Link to="/home">
 				<button>CLICK ME</button>
 			</Link>
@@ -12,4 +12,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default ExpoDetails;
