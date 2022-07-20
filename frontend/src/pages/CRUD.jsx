@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const CRUD = () => {
 	return (
-		<main id="MainHome">
-			<h1>Home</h1>
-			<p>Home page</p>
+		<main id="MainCRUD">
+			<h1>CRUD</h1>
+			<p>CRUD page</p>
 			<Link to="/home">
 				<button>CLICK ME</button>
 			</Link>
@@ -12,4 +12,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default CRUD;
