@@ -28,7 +28,7 @@ CREATE TABLE `images` (
   ) ENGINE=InnoDB;
 
 LOCK TABLES `images` WRITE;
-INSERT INTO `files` (`title`, `url`, `alt`, `original_src`) VALUES
+INSERT INTO `images` (`title`, `url`, `alt`, `original_src`) VALUES
 ("image01", "urltest", "alttest", "originalsrctest"),
 ("image02", "urltest", "alttest", "originalsrctest"),
 ("image03", "urltest", "alttest", "originalsrctest"),
@@ -62,8 +62,8 @@ CREATE TABLE `panels` (
   ) ENGINE=InnoDB;
 
 LOCK TABLES `panels` WRITE;
-INSERT INTO `panels` (`title`, `main_image`, `illus1`, `illus2`, `illus3`, `text`, `category`) VALUES
-("panneau01", 1, 2, 3, 4, "description panneau", 1);
-("panneau02", 5, 6, 7, 8, "description panneau", 2);
+INSERT INTO `panels` (`title`, `main_image_id`, `illus1_id`, `illus2_id`, `illus3_id`, `text`, `category_id`) VALUES
+("panneau01", 1, 2, 3, 4, "description panneau", 1),
+("panneau02", 5, 6, 7, 8, "description panneau", 2),
 ("panneau03", 9, 10, 11, 12, "description panneau", 3);
 UNLOCK TABLES;
