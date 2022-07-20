@@ -12,33 +12,23 @@ const Nav = () => {
 				{navOpen ? <VscMenu /> : <VscClose />}
 			</button>
 
-			<div
-				style={
-					navOpen && screen.width <= 450
-						? { display: "none" }
-						: { display: "flex" }
-				}
-			>
+			<div className="normal">
 				<Link to="/">Accueil</Link>
 				<Link to="/details">Exposition</Link>
 				<Link to="/a-propos">L'Association</Link>
 				<Link to="/connexion">Admin</Link>
 			</div>
 
-			{/* <ul>
-				<li>
+			{navOpen ? (
+				<div className="burger">
 					<Link to="/">Accueil</Link>
-				</li>
-				<li>
 					<Link to="/details">Exposition</Link>
-				</li>
-				<li>
 					<Link to="/a-propos">L'Association</Link>
-				</li>
-				<li>
 					<Link to="/connexion">Admin</Link>
-				</li>
-			</ul> */}
+				</div>
+			) : (
+				<></>
+			)}
 		</nav>
 	);
 };
