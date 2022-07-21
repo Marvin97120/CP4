@@ -57,6 +57,11 @@ const findOne = (id) => {
         p.id,
         p.title panel_title,
         p.text,
+        p.main_image_id,
+        p.illus1_id,
+        p.illus2_id,
+        p.illus3_id,
+        p.category_id,
 
         i.title main_title,
         i.url main_url,

@@ -27,7 +27,7 @@ const CRUD = () => {
 	};
 
 	const [newPanel, setNewPanel] = useState(initialFormState);
-	const [currentPanel, setCurrentPanel] = useState("");
+	const [currentPanel, setCurrentPanel] = useState({});
 
 	const addPanel = (newPanel) => {
 		axios
@@ -41,7 +41,37 @@ const CRUD = () => {
 		setNewPanel(initialFormState);
 	};
 
-	const updatePanel = () => {};
+	const updatePanel = (panel, id) => {
+		console.log(panel);
+		console.log(id);
+
+		const formatedPanel = {
+			title: panel.panel_title,
+			main_image_id: panel.main_image_id,
+			illus1_id: panel.illus1_id,
+			illus2_id: panel.illus2_id,
+			illus3_id: panel.illus3_id,
+			text: panel.text,
+			category_id: panel.category_id,
+		};
+
+		console.log(formatedPanel);
+
+		axios
+			.put(`http://localhost:5000/${id}`, formatedPanel)
+			.then((res) => console.log("all ok"))
+			.catch((err) => console.error(err.res.data));
+	};
+
+	const deletePanel = (id) => {
+		axios
+			.delete(`http://localhost:5000/${id}`)
+			.then((res) => console.log(res.data))
+			.catch((err) => {
+				console.warn(err.res.data);
+			});
+		window.location.reload();
+	};
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -153,11 +183,13 @@ const CRUD = () => {
 						<button onClick={() => addPanel(newPanel)}>Créer le panneau</button>
 					) : (
 						<>
-							<button onClick={() => changePanel(panel, id)}>
+							<button
+								onClick={() => updatePanel(currentPanel, currentPanel.id)}
+							>
 								Modifier le panneau
 							</button>
 
-							<button onClick={() => deletePanel(id)}>
+							<button onClick={() => deletePanel(currentPanel.id)}>
 								Supprimer le panneau
 							</button>
 						</>
