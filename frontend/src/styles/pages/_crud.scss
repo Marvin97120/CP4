@@ -1,33 +1,26 @@
 main#MainCRUD {
-	article {
+	.panelChoice {
+		height: 10vh;
 		display: flex;
+		justify-content: space-around;
 		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: center;
-		border: 2px dotted $bg-color-second;
-		margin: 10px 0;
+
+		.thumbnail {
+			width: 4vh;
+			height: 4vh;
+		}
 	}
 
-	* {
-		padding: 0 5px;
+	fieldset {
+		display: flex;
+		flex-direction: column;
 	}
 
-	h2 {
-		font-style: 1.1rem;
-		margin: 0;
+	legend {
 		text-transform: uppercase;
 	}
 
-	img {
-		width: 100%;
-		height: auto;
-		padding: 0;
-	}
-
-	span {
-		// width: 50%;
-	}
-
-	cite {
+	input {
+		margin: 10px 0;
 	}
 }

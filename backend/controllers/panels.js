@@ -13,6 +13,19 @@ panelsRouter.get("/all", (req, res) => {
 		});
 });
 
+panelsRouter.get("/cat", (req, res) => {
+	panels
+		.findCategory()
+		.then((result) => {
+			console.log(result);
+			res.status(200).json(result);
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send("Error requesting panels informations.");
+		});
+});
+
 panelsRouter.get("/:id", (req, res) => {
 	panels
 		.findOne(req.params.id)
@@ -40,7 +53,6 @@ panelsRouter.post("/", (req, res) => {
 });
 
 panelsRouter.put("/:id", (req, res) => {
-	console.log(req.body);
 	panels
 		.update(req.body, parseInt(req.params.id, 10))
 		.then(([result]) => {
