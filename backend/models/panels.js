@@ -5,12 +5,9 @@ const findAll = () => {
 	return db
 		.query(
 			`SELECT
+            p.id,
             p.title panel_title,
             p.text,
-            p.main_image_id,
-            p.illus1_id illustration_01,
-            p.illus2_id illustration_02,
-            p.illus3_id illustration_03,
             i.title main_title,
             i.url main_url,
             i.alt main_alt,
@@ -46,10 +43,6 @@ const findOne = (id) => {
 			`SELECT
         p.title panel_title,
         p.text,
-        p.main_image_id,
-        p.illus1_id illustration_01,
-        p.illus2_id illustration_02,
-        p.illus3_id illustration_03,
         i.title main_title,
         i.url main_url,
         i.alt main_alt,

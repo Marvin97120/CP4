@@ -6,6 +6,7 @@ import ExpoDetails from "@page/ExpoDetails";
 import Home from "@page/Home";
 import Login from "@page/Login";
 import NotFound from "@page/NotFound";
+import PanelDetails from "./pages/PanelDetails";
 import PanelsList from "@page/PanelsList";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
 				<Route path="/connexion" element={<Login />} />
 				<Route path="/liste" element={<PanelsList />} />
 				<Route path="/admin" element={<CRUD />} />
+				<Route path="/panel/:id" element={<PanelDetails />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>

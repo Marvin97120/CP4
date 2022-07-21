@@ -29,18 +29,18 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 INSERT INTO `images` (`title`, `url`, `alt`, `original_src`) VALUES
-("image01", "urltest01", "alttest", "originalsrctest"),
-("image02", "urltest02", "alttest", "originalsrctest"),
-("image03", "urltest03", "alttest", "originalsrctest"),
-("image04", "urltest04", "alttest", "originalsrctest"),
-("image05", "urltest05", "alttest", "originalsrctest"),
-("image06", "urltest06", "alttest", "originalsrctest"),
-("image07", "urltest07", "alttest", "originalsrctest"),
-("image08", "urltest08", "alttest", "originalsrctest"),
-("image09", "urltest09", "alttest", "originalsrctest"),
-("image10", "urltest10", "alttest", "originalsrctest"),
-("image11", "urltest11", "alttest", "originalsrctest"),
-("image12", "urltest12", "alttest", "originalsrctest");
+("image01", "./src/assets/image01.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image02", "./src/assets/image02.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image03", "./src/assets/image03.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image04", "./src/assets/image04.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image05", "./src/assets/image05.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image06", "./src/assets/image06.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image07", "./src/assets/image07.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image08", "./src/assets/image08.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image09", "./src/assets/image09.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image10", "./src/assets/image10.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image11", "./src/assets/image11.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image12", "./src/assets/image12.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air");
 UNLOCK TABLES;
 
 -- ------------------------------------------------------------------------- --
