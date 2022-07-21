@@ -3,62 +3,62 @@ import axios from "axios";
 
 import NavAdmin from "@comp/NavAdmin";
 
+const initialFormState = {
+	panel_title: "",
+	text: "",
+	category_id: "",
+	main_image_id: "",
+	illus1_id: "",
+	illus2_id: "",
+	illus3_id: "",
+};
+
 const CRUD = () => {
 	const [panels, setPanels] = useState([]);
-	const [choice, setChoice] = useState(true);
+	const [newPanel, setNewPanel] = useState(initialFormState);
+	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
 		axios
 			.get("http://localhost:5000/all")
-			.then((res) => setPanels(res.data))
+			.then((res) => {
+				setPanels(res.data);
+			})
 			.catch((err) => {
 				console.error(err.res.data);
 			});
 	}, []);
 
-	const initialFormState = {
-		title: "",
-		text: "",
-		category_id: "",
-		main_image_id: "",
-		illus1_id: "",
-		illus2_id: "",
-		illus3_id: "",
-	};
+	useEffect(() => {
+		axios
+			.get("http://localhost:5000/cat")
+			.then((res) => {
+				console.log(res.data);
+				setCategories(res.data);
+			})
+			.catch((err) => {
+				console.error(err.res.data);
+			});
+	}, []);
 
-	const [newPanel, setNewPanel] = useState(initialFormState);
-	const [currentPanel, setCurrentPanel] = useState({});
+	const loadIdFromImage = (id) => {
+		setNewPanel(panels.find((panel) => panel.id === id));
+	};
 
 	const addPanel = (newPanel) => {
 		axios
 			.post("http://localhost:5000/", newPanel)
 			.then((result) => {
 				alert("Le panneau a bien été créé.");
-				window.location.reload();
+				setNewPanel(initialFormState);
 			})
 			.catch((err) => console.error(err.res.data));
-
-		setNewPanel(initialFormState);
 	};
 
 	const updatePanel = (panel, id) => {
 		console.log(panel);
-		console.log(id);
-
-		const formatedPanel = {
-			title: panel.panel_title,
-			main_image_id: panel.main_image_id,
-			illus1_id: panel.illus1_id,
-			illus2_id: panel.illus2_id,
-			illus3_id: panel.illus3_id,
-			text: panel.text,
-			category_id: panel.category_id,
-		};
-
-		console.log(formatedPanel);
-
 		axios
-			.put(`http://localhost:5000/${id}`, formatedPanel)
+			.put(`http://localhost:5000/${id}`, panel)
 			.then((res) => console.log("all ok"))
 			.catch((err) => console.error(err.res.data));
 	};
@@ -66,11 +66,10 @@ const CRUD = () => {
 	const deletePanel = (id) => {
 		axios
 			.delete(`http://localhost:5000/${id}`)
-			.then((res) => console.log(res.data))
+			.then((res) => setPanels(panels.filter((panel) => panel.id !== id)))
 			.catch((err) => {
 				console.warn(err.res.data);
 			});
-		window.location.reload();
 	};
 
 	const handleChange = (event) => {
@@ -86,12 +85,16 @@ const CRUD = () => {
 			<NavAdmin />
 
 			<main id="MainCRUD">
-				<button onClick={() => setChoice(true)}>Ajouter un Panneau</button>
-				<button onClick={() => setChoice(false)}>Modifier les panneaux</button>
+				<button onClick={() => setNewPanel(initialFormState)}>
+					Ajouter un Panneau
+				</button>
+				<button onClick={() => setNewPanel(panels[0])}>
+					Modifier les panneaux
+				</button>
 
-				<h1>{choice ? "Ajouter un panneau" : "Modifier un panneau"}</h1>
+				<h1>{!newPanel.id ? "Ajouter un panneau" : "Modifier un panneau"}</h1>
 
-				{!choice ? (
+				{newPanel.id ? (
 					<section className="panelChoice">
 						{panels.map((p, index) => (
 							<article key={index}>
@@ -99,12 +102,7 @@ const CRUD = () => {
 									src={p.main_url}
 									alt={p.main_alt}
 									className="thumbnail"
-									onClick={() => {
-										axios
-											.get(`http://localhost:5000/${p.id}`)
-											.then((res) => setCurrentPanel(res.data))
-											.catch((err) => console.error(err.res.data));
-									}}
+									onClick={() => loadIdFromImage(p.id)}
 								/>
 							</article>
 						))}
@@ -115,81 +113,106 @@ const CRUD = () => {
 
 				<section>
 					<fieldset>
-						<legend>{choice ? "panneau" : `panneau ${currentPanel.id}`}</legend>
-						<label>Titre</label>
-						<input
-							type="text"
-							name="title"
-							value={newPanel.title}
-							placeholder={!choice ? `${currentPanel.panel_title}` : ""}
-							onChange={handleChange}
-						/>
+						<legend>
+							{!newPanel.id ? "panneau" : `panneau ${newPanel.id}`}
+						</legend>
 
+						{console.log(newPanel)}
+
+						{/* TITRE */}
+						<label>Titre</label>
+
+						{!newPanel.id ? (
+							<input
+								type="text"
+								name="panel_title"
+								value={newPanel.panel_title}
+								onChange={handleChange}
+							/>
+						) : (
+							<input
+								type="text"
+								name="panel_title"
+								value={newPanel.panel_title}
+								placeholder={newPanel.panel_title}
+								onChange={handleChange}
+							/>
+						)}
+
+						{/* TEXTE */}
 						<label>Texte</label>
 						<input
 							type="text"
 							name="text"
 							value={newPanel.text}
-							placeholder={!choice ? `${currentPanel.text}` : ""}
+							placeholder={!newPanel.id ? "" : newPanel.text}
 							onChange={handleChange}
 						/>
 
+						{/* CATEGORIE */}
 						<label>Catégorie</label>
-						<input
+						<select
 							type="text"
 							name="category_id"
 							value={newPanel.category_id}
-							placeholder={!choice ? `${currentPanel.category}` : ""}
+							placeholder={!newPanel.id ? "" : newPanel.category}
 							onChange={handleChange}
-						/>
+						>
+							{categories.map((cat) => (
+								<option value={cat.id}>{cat.name}</option>
+							))}
+						</select>
 
+						{/* IMAGE PRINC */}
 						<label>URL image principale</label>
+
 						<input
 							type="text"
 							name="main_image_id"
 							value={newPanel.main_image_id}
-							placeholder={!choice ? `${currentPanel.main_url}` : ""}
+							placeholder={!newPanel.id ? "" : newPanel.main_image_id}
 							onChange={handleChange}
 						/>
 
+						{/* IMAGE 2 */}
 						<label>URL image 1</label>
 						<input
 							type="text"
 							name="illus1_id"
 							value={newPanel.illus1_id}
-							placeholder={!choice ? `${currentPanel.illus1_url}` : ""}
+							placeholder={!newPanel.id ? "" : newPanel.illus1_id}
 							onChange={handleChange}
 						/>
 
+						{/* IMAGE 3 */}
 						<label>URL image 2</label>
 						<input
 							type="text"
 							name="illus2_id"
 							value={newPanel.illus2_id}
-							placeholder={!choice ? `${currentPanel.illus2_url}` : ""}
+							placeholder={!newPanel.id ? "" : newPanel.illus2_id}
 							onChange={handleChange}
 						/>
 
+						{/* IMAGE 4 */}
 						<label>URL image 3</label>
 						<input
 							type="text"
 							name="illus3_id"
 							value={newPanel.illus3_id}
-							placeholder={!choice ? `${currentPanel.illus3_url}` : ""}
+							placeholder={!newPanel.id ? "" : newPanel.illus3_id}
 							onChange={handleChange}
 						/>
 					</fieldset>
-					{choice ? (
+					{!newPanel.id ? (
 						<button onClick={() => addPanel(newPanel)}>Créer le panneau</button>
 					) : (
 						<>
-							<button
-								onClick={() => updatePanel(currentPanel, currentPanel.id)}
-							>
+							<button onClick={() => updatePanel(newPanel, newPanel.id)}>
 								Modifier le panneau
 							</button>
 
-							<button onClick={() => deletePanel(currentPanel.id)}>
+							<button onClick={() => deletePanel(newPanel.id)}>
 								Supprimer le panneau
 							</button>
 						</>
