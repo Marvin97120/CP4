@@ -1,4 +1,16 @@
 main#MainCRUD {
+	.panelChoice {
+		height: 10vh;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+
+		.thumbnail {
+			width: 4vh;
+			height: 4vh;
+		}
+	}
+
 	fieldset {
 		display: flex;
 		flex-direction: column;

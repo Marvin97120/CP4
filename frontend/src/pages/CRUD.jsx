@@ -5,6 +5,7 @@ import NavAdmin from "@comp/NavAdmin";
 
 const CRUD = () => {
 	const [panels, setPanels] = useState([]);
+	const [choice, setChoice] = useState(true);
 
 	useEffect(() => {
 		axios
@@ -36,6 +37,8 @@ const CRUD = () => {
 		setNewPanel(initialFormState);
 	};
 
+	const updatePanel = () => {};
+
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 
@@ -49,7 +52,25 @@ const CRUD = () => {
 			<NavAdmin />
 
 			<main id="MainCRUD">
-				<h1>Ajouter un panneau</h1>
+				<button onClick={() => setChoice(true)}>Ajouter un Panneau</button>
+				<button onClick={() => setChoice(false)}>Modifier les panneaux</button>
+
+				<h1>{choice ? "Ajouter un panneau" : "Modifier un panneau"}</h1>
+
+				{!choice ? (
+					<section className="panelChoice">
+						{panels.map((p, index) => (
+							<img
+								key={index}
+								src={p.main_url}
+								alt={p.main_alt}
+								className="thumbnail"
+							/>
+						))}
+					</section>
+				) : (
+					<section className="panelChoice"></section>
+				)}
 
 				<section>
 					<fieldset>
@@ -110,10 +131,19 @@ const CRUD = () => {
 							onChange={handleChange}
 						/>
 					</fieldset>
+					{choice ? (
+						<button onClick={() => addPanel(newPanel)}>Créer le panneau</button>
+					) : (
+						<>
+							<button onClick={() => changePanel(panel, id)}>
+								Modifier le panneau
+							</button>
 
-					<button onClick={() => addPanel(newPanel)}>
-						Valider le formulaire
-					</button>
+							<button onClick={() => deletePanel(id)}>
+								Supprimer le panneau
+							</button>
+						</>
+					)}
 				</section>
 			</main>
 		</>
