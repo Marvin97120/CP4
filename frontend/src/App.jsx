@@ -16,10 +16,13 @@ const App = () => {
 				<Route path="/" element={<Home />} />
 				<Route path="/a-propos" element={<AboutUs />} />
 				<Route path="/details" element={<ExpoDetails />} />
+
 				<Route path="/connexion" element={<Login />} />
-				<Route path="/liste" element={<PanelsList />} />
 				<Route path="/admin" element={<CRUD />} />
+
+				<Route path="/liste" element={<PanelsList />} />
 				<Route path="/panel/:id" element={<PanelDetails />} />
+
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>

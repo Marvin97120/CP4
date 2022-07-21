@@ -21,7 +21,7 @@ const PanelDetails = () => {
 		<>
 			<Nav />
 
-			<Link to="/admin">
+			<Link to="/liste">
 				<button>Retour aux panneaux</button>
 			</Link>
 
