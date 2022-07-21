@@ -37,17 +37,14 @@ const PanelDetails = () => {
 				<div className="illustration-container">
 					<div className="illustration">
 						<img src={`../${panel.illus1_url}`} alt={panel.illus1_alt} />
-						{/* <cite>{panel.illus1_title}</cite> */}
 					</div>
 
 					<div className="illustration">
 						<img src={`../${panel.illus2_url}`} alt={panel.illus2_alt} />
-						{/* <cite>{panel.illus2_title}</cite> */}
 					</div>
 
 					<div className="illustration">
 						<img src={`../${panel.illus3_url}`} alt={panel.illus3_alt} />
-						{/* <cite>{panel.illus3_title}</cite> */}
 					</div>
 				</div>
 
