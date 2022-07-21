@@ -27,11 +27,15 @@ const CRUD = () => {
 	};
 
 	const [newPanel, setNewPanel] = useState(initialFormState);
+	const [currentPanel, setCurrentPanel] = useState("");
 
 	const addPanel = (newPanel) => {
 		axios
 			.post("http://localhost:5000/", newPanel)
-			.then((result) => alert("Le panneau a bien été créé."))
+			.then((result) => {
+				alert("Le panneau a bien été créé.");
+				window.location.reload();
+			})
 			.catch((err) => console.error(err.res.data));
 
 		setNewPanel(initialFormState);
@@ -60,12 +64,19 @@ const CRUD = () => {
 				{!choice ? (
 					<section className="panelChoice">
 						{panels.map((p, index) => (
-							<img
-								key={index}
-								src={p.main_url}
-								alt={p.main_alt}
-								className="thumbnail"
-							/>
+							<article key={index}>
+								<img
+									src={p.main_url}
+									alt={p.main_alt}
+									className="thumbnail"
+									onClick={() => {
+										axios
+											.get(`http://localhost:5000/${p.id}`)
+											.then((res) => setCurrentPanel(res.data))
+											.catch((err) => console.error(err.res.data));
+									}}
+								/>
+							</article>
 						))}
 					</section>
 				) : (
@@ -74,12 +85,13 @@ const CRUD = () => {
 
 				<section>
 					<fieldset>
-						<legend>panneau</legend>
+						<legend>{choice ? "panneau" : `panneau ${currentPanel.id}`}</legend>
 						<label>Titre</label>
 						<input
 							type="text"
 							name="title"
 							value={newPanel.title}
+							placeholder={!choice ? `${currentPanel.panel_title}` : ""}
 							onChange={handleChange}
 						/>
 
@@ -88,6 +100,7 @@ const CRUD = () => {
 							type="text"
 							name="text"
 							value={newPanel.text}
+							placeholder={!choice ? `${currentPanel.text}` : ""}
 							onChange={handleChange}
 						/>
 
@@ -96,6 +109,7 @@ const CRUD = () => {
 							type="text"
 							name="category_id"
 							value={newPanel.category_id}
+							placeholder={!choice ? `${currentPanel.category}` : ""}
 							onChange={handleChange}
 						/>
 
@@ -104,6 +118,7 @@ const CRUD = () => {
 							type="text"
 							name="main_image_id"
 							value={newPanel.main_image_id}
+							placeholder={!choice ? `${currentPanel.main_url}` : ""}
 							onChange={handleChange}
 						/>
 
@@ -112,6 +127,7 @@ const CRUD = () => {
 							type="text"
 							name="illus1_id"
 							value={newPanel.illus1_id}
+							placeholder={!choice ? `${currentPanel.illus1_url}` : ""}
 							onChange={handleChange}
 						/>
 
@@ -120,6 +136,7 @@ const CRUD = () => {
 							type="text"
 							name="illus2_id"
 							value={newPanel.illus2_id}
+							placeholder={!choice ? `${currentPanel.illus2_url}` : ""}
 							onChange={handleChange}
 						/>
 
@@ -128,6 +145,7 @@ const CRUD = () => {
 							type="text"
 							name="illus3_id"
 							value={newPanel.illus3_id}
+							placeholder={!choice ? `${currentPanel.illus3_url}` : ""}
 							onChange={handleChange}
 						/>
 					</fieldset>
