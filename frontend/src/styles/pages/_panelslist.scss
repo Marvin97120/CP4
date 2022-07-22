@@ -1,0 +1,52 @@
+main#MainPanelsList {
+	@media screen and (min-width: 800px) {
+		width: 80%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	h1 {
+		@media screen and (min-width: 800px) {
+			width: 100%;
+		}
+	}
+
+	a {
+		@media screen and (min-width: 800px) {
+			width: 45%;
+		}
+	}
+
+	section * {
+		padding: 0 5px;
+	}
+
+	article {
+		display: flex;
+		margin: 10px 0;
+		padding: 0;
+
+		cite {
+			align-self: center;
+		}
+	}
+
+	h2 {
+		font-style: 1.1rem;
+		margin: 0;
+		text-transform: uppercase;
+		display: flex;
+		justify-content: space-between;
+
+		span {
+			text-transform: initial;
+		}
+	}
+
+	img {
+		width: 80%;
+		height: auto;
+		padding: 0;
+	}
+}

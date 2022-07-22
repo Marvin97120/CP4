@@ -1,6 +1,11 @@
+$bg-image: "../../assets/background.jpg";
 $bg-color-main: #fff;
 $bg-color-second: #000;
 $bg-color-button: #0366ee;
+$bg-color-third: #9a7d6b;
 
 $text-color-main: #fff;
 $text-color-second: #000;
+
+$text-highlight: $text-color-second 1px 1px, $text-color-second -1px 1px,
+	$text-color-second -1px -1px, $text-color-second 1px -1px;

@@ -1,0 +1,31 @@
+main#MainPanelDetails {
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	.illustration-container {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+
+	.illustration {
+		display: flex;
+
+		img {
+			width: 8vh;
+			height: 8vh;
+			object-fit: cover;
+		}
+	}
+
+	h1 {
+		margin-bottom: 0;
+	}
+
+	p:first-of-type {
+		margin-top: 0;
+		font-style: italic;
+	}
+}

@@ -28,19 +28,19 @@ CREATE TABLE `images` (
   ) ENGINE=InnoDB;
 
 LOCK TABLES `images` WRITE;
-INSERT INTO `files` (`title`, `url`, `alt`, `original_src`) VALUES
-("image01", "urltest", "alttest", "originalsrctest"),
-("image02", "urltest", "alttest", "originalsrctest"),
-("image03", "urltest", "alttest", "originalsrctest"),
-("image04", "urltest", "alttest", "originalsrctest"),
-("image05", "urltest", "alttest", "originalsrctest"),
-("image06", "urltest", "alttest", "originalsrctest"),
-("image07", "urltest", "alttest", "originalsrctest"),
-("image08", "urltest", "alttest", "originalsrctest"),
-("image09", "urltest", "alttest", "originalsrctest"),
-("image10", "urltest", "alttest", "originalsrctest"),
-("image11", "urltest", "alttest", "originalsrctest"),
-("image12", "urltest", "alttest", "originalsrctest");
+INSERT INTO `images` (`title`, `url`, `alt`, `original_src`) VALUES
+("image01", "./src/assets/image01.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image02", "./src/assets/image02.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image03", "./src/assets/image03.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image04", "./src/assets/image04.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image05", "./src/assets/image05.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image06", "./src/assets/image06.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image07", "./src/assets/image07.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image08", "./src/assets/image08.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image09", "./src/assets/image09.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image10", "./src/assets/image10.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image11", "./src/assets/image11.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air"),
+("image12", "./src/assets/image12.webp", "alttest", "https://padlet.com/afac974/expo_Bel_Air");
 UNLOCK TABLES;
 
 -- ------------------------------------------------------------------------- --
@@ -62,8 +62,8 @@ CREATE TABLE `panels` (
   ) ENGINE=InnoDB;
 
 LOCK TABLES `panels` WRITE;
-INSERT INTO `panels` (`title`, `main_image`, `illus1`, `illus2`, `illus3`, `text`, `category`) VALUES
-("panneau01", 1, 2, 3, 4, "description panneau", 1);
-("panneau02", 5, 6, 7, 8, "description panneau", 2);
-("panneau03", 9, 10, 11, 12, "description panneau", 3);
+INSERT INTO `panels` (`title`, `main_image_id`, `illus1_id`, `illus2_id`, `illus3_id`, `text`, `category_id`) VALUES
+("panneau 01", 1, 2, 3, 4, "description panneau01", 1),
+("panneau 02", 5, 6, 7, 8, "description panneau02", 2),
+("panneau 03", 9, 10, 11, 12, "description panneau03", 3);
 UNLOCK TABLES;
