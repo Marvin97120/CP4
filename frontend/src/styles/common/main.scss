@@ -6,9 +6,12 @@
 @import "@sassP/login";
 @import "@sassP/home";
 @import "@sassP/notfound";
+@import "@sassP/aboutus";
+@import "@sassP/crud";
+@import "@sassP/panelslist";
+@import "@sassP/expodetails";
+@import "@sassP/paneldetails";
 
 // COMPONENTS
-@import "@sassC/usertable";
-@import "@sassC/edituserform";
-@import "@sassC/adduserform";
-
+@import "@sassC/nav";
+@import "@sassC/navadmin";

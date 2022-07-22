@@ -1,0 +1,10 @@
+main#MainExpoDetails {
+	@media screen and (min-width: 800px) {
+		display: flex;
+		justify-content: space-between;
+
+		article {
+			width: 45%;
+		}
+	}
+}
