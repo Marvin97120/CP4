@@ -19,4 +19,13 @@ main#MainPanelDetails {
 			object-fit: cover;
 		}
 	}
+
+	h1 {
+		margin-bottom: 0;
+	}
+
+	p:first-of-type {
+		margin-top: 0;
+		font-style: italic;
+	}
 }

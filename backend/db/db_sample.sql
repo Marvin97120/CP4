@@ -63,7 +63,7 @@ CREATE TABLE `panels` (
 
 LOCK TABLES `panels` WRITE;
 INSERT INTO `panels` (`title`, `main_image_id`, `illus1_id`, `illus2_id`, `illus3_id`, `text`, `category_id`) VALUES
-("panneau01", 1, 2, 3, 4, "description panneau01", 1),
-("panneau02", 5, 6, 7, 8, "description panneau02", 2),
-("panneau03", 9, 10, 11, 12, "description panneau03", 3);
+("panneau 01", 1, 2, 3, 4, "description panneau01", 1),
+("panneau 02", 5, 6, 7, 8, "description panneau02", 2),
+("panneau 03", 9, 10, 11, 12, "description panneau03", 3);
 UNLOCK TABLES;

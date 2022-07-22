@@ -8,6 +8,10 @@ nav#NavAdmin {
 		right: 0;
 		z-index: 20;
 		font-size: 2rem;
+		margin: 0;
+		padding: 5px;
+		border: 1px solid $bg-color-third;
+		border-radius: 1% 0 1% 50%;
 
 		@media screen and (min-width: 450px) {
 			display: none;
@@ -39,5 +43,9 @@ nav#NavAdmin {
 		@media screen and (min-width: 450px) {
 			display: none;
 		}
+	}
+
+	a {
+		font-size: 1.5rem;
 	}
 }

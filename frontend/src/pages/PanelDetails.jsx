@@ -10,7 +10,7 @@ const PanelDetails = () => {
 
 	useEffect(() => {
 		axios
-			.get(`http://localhost:5000/${id}`)
+			.get(`${import.meta.env.VITE_BACKEND_URL}/panel/${id}`)
 			.then((res) => {
 				setPanel(res.data);
 			})
@@ -21,7 +21,7 @@ const PanelDetails = () => {
 		<>
 			<Nav />
 
-			<Link to="/liste">
+			<Link to="/">
 				<button>Retour aux panneaux</button>
 			</Link>
 

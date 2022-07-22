@@ -31,6 +31,7 @@ const AboutUs = () => {
 				<section>
 					<a href="https://webrun.fr">
 						<ImMail2 />
+
 						<span>Adhérez à Capeline</span>
 					</a>
 				</section>

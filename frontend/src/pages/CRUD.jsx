@@ -20,7 +20,7 @@ const CRUD = () => {
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:5000/all")
+			.get(`${import.meta.env.VITE_BACKEND_URL}/all`)
 			.then((res) => {
 				setPanels(res.data);
 			})
@@ -31,9 +31,8 @@ const CRUD = () => {
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:5000/cat")
+			.get(`${import.meta.env.VITE_BACKEND_URL}/cat`)
 			.then((res) => {
-				console.log(res.data);
 				setCategories(res.data);
 			})
 			.catch((err) => {
@@ -47,7 +46,7 @@ const CRUD = () => {
 
 	const addPanel = (newPanel) => {
 		axios
-			.post("http://localhost:5000/", newPanel)
+			.post(`${import.meta.env.VITE_BACKEND_URL}/create`, newPanel)
 			.then((result) => {
 				alert("Le panneau a bien été créé.");
 				setNewPanel(initialFormState);
@@ -58,15 +57,18 @@ const CRUD = () => {
 	const updatePanel = (panel, id) => {
 		console.log(panel);
 		axios
-			.put(`http://localhost:5000/${id}`, panel)
-			.then((res) => console.log("all ok"))
+			.put(`${import.meta.env.VITE_BACKEND_URL}/panel/${id}`, panel)
+			.then((res) => alert("Le panneau a bien été modifié."))
 			.catch((err) => console.error(err.res.data));
 	};
 
 	const deletePanel = (id) => {
 		axios
-			.delete(`http://localhost:5000/${id}`)
-			.then((res) => setPanels(panels.filter((panel) => panel.id !== id)))
+			.delete(`${import.meta.env.VITE_BACKEND_URL}/panel/${id}`)
+			.then((res) => {
+				alert("Le panneau a bien été supprimé.");
+				setPanels(panels.filter((panel) => panel.id !== id));
+			})
 			.catch((err) => {
 				console.warn(err.res.data);
 			});
@@ -85,12 +87,15 @@ const CRUD = () => {
 			<NavAdmin />
 
 			<main id="MainCRUD">
-				<button onClick={() => setNewPanel(initialFormState)}>
-					Ajouter un Panneau
-				</button>
-				<button onClick={() => setNewPanel(panels[0])}>
-					Modifier les panneaux
-				</button>
+				<div className="button-container">
+					<button onClick={() => setNewPanel(initialFormState)}>
+						Ajouter un Panneau
+					</button>
+
+					<button onClick={() => setNewPanel(panels[0])}>
+						Modifier les panneaux
+					</button>
+				</div>
 
 				<h1>{!newPanel.id ? "Ajouter un panneau" : "Modifier un panneau"}</h1>
 
@@ -110,6 +115,8 @@ const CRUD = () => {
 				) : (
 					<section className="panelChoice"></section>
 				)}
+
+				{console.log(`${import.meta.env.BASE_URL}`)}
 
 				<section>
 					<fieldset>
@@ -214,19 +221,24 @@ const CRUD = () => {
 							onChange={handleChange}
 						/>
 					</fieldset>
-					{!newPanel.id ? (
-						<button onClick={() => addPanel(newPanel)}>Créer le panneau</button>
-					) : (
-						<>
-							<button onClick={() => updatePanel(newPanel, newPanel.id)}>
-								Modifier le panneau
-							</button>
 
-							<button onClick={() => deletePanel(newPanel.id)}>
-								Supprimer le panneau
+					<div className="button-container">
+						{!newPanel.id ? (
+							<button onClick={() => addPanel(newPanel)}>
+								Créer le panneau
 							</button>
-						</>
-					)}
+						) : (
+							<>
+								<button onClick={() => updatePanel(newPanel, newPanel.id)}>
+									Modifier le panneau
+								</button>
+
+								<button onClick={() => deletePanel(newPanel.id)}>
+									Supprimer le panneau
+								</button>
+							</>
+						)}
+					</div>
 				</section>
 			</main>
 		</>

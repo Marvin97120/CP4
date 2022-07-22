@@ -3,28 +3,69 @@
 body {
 	margin: 0;
 	box-sizing: border-box;
-	background-color: $bg-color-main;
-	font-family: "Open Sans";
+	background-image: url($bg-image);
+	background-position: center;
+	background-origin: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	font-family: "Roboto";
 }
 
 #root {
-	min-height: 80vh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	line-height: 1.5;
 }
 
 main {
 	width: 80%;
 	margin: auto;
+
+	@media screen and (min-width: 800px) {
+		width: 60%;
+	}
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Open Sans";
+	color: $text-color-main;
+	background-color: $bg-color-third;
+}
+
+p {
+	background-color: $bg-color-third;
+	padding: 10px;
 }
 
 a {
 	text-decoration: none;
-	color: $text-color-second;
+	color: $text-color-main;
+	text-shadow: $text-highlight;
 
 	:visited {
-		color: $text-color-second;
+		color: $text-color-main;
+	}
+}
+
+button {
+	padding: 20px;
+	margin: 10px;
+	border-radius: 2px;
+	border: transparent 4px solid;
+	text-transform: uppercase;
+	text-rendering: optimizeLegibility;
+	background-color: #e7e5e4;
+	letter-spacing: 0.1em;
+	font-weight: 600;
+	box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+
+	&:hover {
+		border: $bg-color-third 4px solid;
 	}
 }

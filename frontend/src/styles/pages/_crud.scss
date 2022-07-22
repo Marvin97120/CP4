@@ -1,26 +1,45 @@
 main#MainCRUD {
+	.button-container {
+		display: flex;
+		justify-content: space-around;
+		margin-bottom: 30px;
+	}
+
 	.panelChoice {
-		height: 10vh;
+		min-height: 16vh;
+		max-height: 16vh;
 		display: flex;
 		justify-content: space-around;
 		flex-wrap: wrap;
 
 		.thumbnail {
-			width: 4vh;
-			height: 4vh;
+			width: 8vh;
+			height: 8vh;
+			border: 1px solid $text-color-second;
 		}
 	}
 
 	fieldset {
 		display: flex;
 		flex-direction: column;
+		background-color: $bg-color-third;
 	}
 
 	legend {
 		text-transform: uppercase;
+		font-weight: 900;
+		font-size: 1.5rem;
+		background-color: $bg-color-third;
 	}
 
-	input {
-		margin: 10px 0;
+	input,
+	select {
+		width: 80%;
+		margin: 10px auto;
+		padding: 5px;
+	}
+
+	select {
+		width: 83%;
 	}
 }

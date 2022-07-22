@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Nav from "@comp/Nav";
 
 const ExpoDetails = () => {
@@ -27,9 +26,6 @@ const ExpoDetails = () => {
 					obcaecati voluptatibus minus blanditiis accusantium, dolorum nesciunt
 					sint officiis, assumenda, modi enim. Quas, dolor.
 				</p>
-				<button>
-					<Link to="/liste">Liste des panneaux</Link>
-				</button>
 			</main>
 		</>
 	);
