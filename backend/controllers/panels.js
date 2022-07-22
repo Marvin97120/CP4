@@ -1,4 +1,5 @@
 const panelsRouter = require("express").Router();
+const { checkPost } = require("./../middlewares/checkPost");
 const panels = require("../models/panels");
 
 panelsRouter.get("/all", (req, res) => {
@@ -40,7 +41,7 @@ panelsRouter.get("/:id", (req, res) => {
 		});
 });
 
-panelsRouter.post("/", (req, res) => {
+panelsRouter.post("/", checkPost, (req, res) => {
 	panels
 		.add(req.body)
 		.then(([result]) => {
@@ -52,7 +53,7 @@ panelsRouter.post("/", (req, res) => {
 		});
 });
 
-panelsRouter.put("/:id", (req, res) => {
+panelsRouter.put("/:id", checkPost, (req, res) => {
 	panels
 		.update(req.body, parseInt(req.params.id, 10))
 		.then(([result]) => {
