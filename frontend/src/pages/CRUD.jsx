@@ -151,17 +151,27 @@ const CRUD = () => {
 
 						{/* CATEGORIE */}
 						<label>Catégorie</label>
-						<select
-							type="text"
-							name="category_id"
-							value={newPanel.category_id}
-							placeholder={!newPanel.id ? "" : newPanel.category}
-							onChange={handleChange}
-						>
-							{categories.map((cat) => (
-								<option value={cat.id}>{cat.name}</option>
-							))}
-						</select>
+
+						{!newPanel.id ? (
+							<input
+								type="text"
+								name="category_id"
+								value={newPanel.category_id}
+								onChange={handleChange}
+							/>
+						) : (
+							<select
+								type="text"
+								name="category_id"
+								value={newPanel.category_id}
+								placeholder={!newPanel.id ? "" : newPanel.category}
+								onChange={handleChange}
+							>
+								{categories.map((cat) => (
+									<option value={cat.id}>{cat.name}</option>
+								))}
+							</select>
+						)}
 
 						{/* IMAGE PRINC */}
 						<label>URL image principale</label>

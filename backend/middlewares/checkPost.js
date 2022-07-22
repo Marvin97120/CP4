@@ -1,6 +1,16 @@
 const Joi = require("joi");
 
 const checkPost = (req, res, next) => {
+	const {
+		panel_title,
+		text,
+		category_id,
+		main_image_id,
+		illus1_id,
+		illus2_id,
+		illus3_id,
+	} = req.body;
+
 	const { error } = Joi.object({
 		panel_title: Joi.string().max(255).required(),
 		text: Joi.string().max(255).required(),
@@ -25,6 +35,7 @@ const checkPost = (req, res, next) => {
 	if (!error) {
 		next();
 	} else {
+		console.log(error);
 		res.status(400).json(error);
 	}
 };
