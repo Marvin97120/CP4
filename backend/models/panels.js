@@ -111,7 +111,6 @@ const findOne = (id) => {
 };
 
 const findCategory = () => {
-	console.log("zrgfrgrzg");
 	return db.query(`SELECT * FROM categories`).then(([res]) => res);
 };
 

@@ -27,7 +27,7 @@ panelsRouter.get("/cat", (req, res) => {
 		});
 });
 
-panelsRouter.get("/:id", (req, res) => {
+panelsRouter.get("/panel/:id", (req, res) => {
 	panels
 		.findOne(req.params.id)
 		.then((result) => {
@@ -41,7 +41,7 @@ panelsRouter.get("/:id", (req, res) => {
 		});
 });
 
-panelsRouter.post("/", checkPost, (req, res) => {
+panelsRouter.post("/create", checkPost, (req, res) => {
 	panels
 		.add(req.body)
 		.then(([result]) => {
@@ -53,7 +53,7 @@ panelsRouter.post("/", checkPost, (req, res) => {
 		});
 });
 
-panelsRouter.put("/:id", checkPost, (req, res) => {
+panelsRouter.put("/panel/:id", checkPost, (req, res) => {
 	panels
 		.update(req.body, parseInt(req.params.id, 10))
 		.then(([result]) => {
@@ -69,7 +69,7 @@ panelsRouter.put("/:id", checkPost, (req, res) => {
 		});
 });
 
-panelsRouter.delete("/:id", (req, res) => {
+panelsRouter.delete("/panel/:id", (req, res) => {
 	panels
 		.remove(req.params.id)
 		.then((result) => {

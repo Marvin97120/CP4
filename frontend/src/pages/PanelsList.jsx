@@ -31,12 +31,16 @@ const PanelsList = () => {
 
 				{panelsList.map((p, index) => (
 					<Link to={`/panel/${p.id}`} key={index}>
-						<article>
-							<h2>{p.panel_title}</h2>
-							<img src={p.main_url} alt={p.main_alt} />
-							<span>{p.category}</span>
-							<cite>{p.main_title}</cite>
-						</article>
+						<section>
+							<h2>
+								{p.panel_title} <span>{p.category}</span>
+							</h2>
+							<article>
+								<img src={p.main_url} alt={p.main_alt} />
+
+								<cite>{p.main_title}</cite>
+							</article>
+						</section>
 					</Link>
 				))}
 			</main>
