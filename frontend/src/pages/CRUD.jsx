@@ -55,7 +55,6 @@ const CRUD = () => {
 	};
 
 	const updatePanel = (panel, id) => {
-		console.log(panel);
 		axios
 			.put(`${import.meta.env.VITE_BACKEND_URL}/panel/${id}`, panel)
 			.then((res) => alert("Le panneau a bien été modifié."))
