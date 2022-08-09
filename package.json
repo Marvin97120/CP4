@@ -6,6 +6,9 @@
 	"license": "MIT",
 	"main": "main.jsx",
 	"scripts": {
+		"devite": "vite",
+    		"build": "vite build",
+    		"preview": "vite preview",
 		"setup": "npm i && npm --prefix ./frontend i && npm --prefix ./backend i",
 		"dev": "concurrently \"npm --prefix ./frontend run start\" \"npm --prefix ./backend run back\""
 	},
