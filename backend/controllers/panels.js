@@ -49,13 +49,13 @@ panelsRouter.post("/create", checkPost, (req, res) => {
 		})
 		.catch((err) => {
 			console.error(err);
-			res.status(500).json(`Error creating panel.`);
+			res.status(500).json("Error creating panel.");
 		});
 });
 
 panelsRouter.put("/panel/:id", checkPost, (req, res) => {
 	panels
-		.update(req.body, parseInt(req.params.id, 10))
+		.update(req.body, Number.parseInt(req.params.id, 10))
 		.then(([result]) => {
 			if (result.affectedRows === 0) {
 				res.jsonStatus(404);

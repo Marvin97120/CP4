@@ -17,7 +17,7 @@ const Login = () => {
 				<input name="password" type="password" />
 
 				<Link to="/admin">
-					<button>Se Connecter</button>
+					<button type="button">Se Connecter</button>
 				</Link>
 			</main>
 		</>

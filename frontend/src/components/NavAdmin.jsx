@@ -8,7 +8,7 @@ const NavAdmin = () => {
 
 	return (
 		<nav id="NavAdmin">
-			<button onClick={() => setNavOpen(!navOpen)}>
+			<button type="button" onClick={() => setNavOpen(!navOpen)}>
 				{navOpen ? <VscClose /> : <VscMenu />}
 			</button>
 

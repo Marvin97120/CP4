@@ -50,7 +50,7 @@ const findAll = () => {
             ON p.illus3_id = i3.id
 
             ORDER BY p.id
-            `
+            `,
 		)
 		.then(([res]) => res);
 };
@@ -105,13 +105,13 @@ const findOne = (id) => {
         
         WHERE p.id = ?
         `,
-			[id]
+			[id],
 		)
 		.then(([res]) => res[0]);
 };
 
 const findCategory = () => {
-	return db.query(`SELECT * FROM categories`).then(([res]) => res);
+	return db.query("SELECT * FROM categories").then(([res]) => res);
 };
 
 const add = (panel) => {
@@ -125,7 +125,7 @@ const add = (panel) => {
 			panel.illus3_id,
 			panel.text,
 			panel.category_id,
-		]
+		],
 	);
 };
 
@@ -150,7 +150,7 @@ const update = (panel, id) => {
 			panel.text,
 			panel.category_id,
 			id,
-		]
+		],
 	);
 };
 

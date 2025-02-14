@@ -15,14 +15,14 @@ const PanelDetails = () => {
 				setPanel(res.data);
 			})
 			.catch((err) => console.error(err));
-	}, []);
+	}, [id]);
 
 	return (
 		<>
 			<Nav />
 
 			<Link to="/">
-				<button>Retour aux panneaux</button>
+				<button type="button">Retour aux panneaux</button>
 			</Link>
 
 			<main id="MainPanelDetails">
